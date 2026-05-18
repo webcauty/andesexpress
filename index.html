@@ -740,4 +740,39 @@ async function trackPackage(){
 </script>
 
 </body>
+</html>class="status">
+                         Estado actual:
+                        <strong>${data.estado}</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+            `;
+
+        }else{
+
+            result.innerHTML = `
+            <div class="error-box">
+                 Número de guía no encontrado
+            </div>
+            `;
+        }
+
+    }catch(error){
+
+        result.innerHTML = `
+        <div class="warning-box">
+             Error al conectar con el servidor
+        </div>
+        `;
+
+        console.error(error);
+    }
+}
+
+</script>
+
+</body>
 </html>
