@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Andes Express Cargo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#222;
+    overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+    width:100%;
+    background:rgba(0,0,0,0.75);
+    backdrop-filter:blur(10px);
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+}
+
+nav{
+    width:100%;
+    max-width:1400px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 8%;
+}
+
+.logo{
+    color:white;
+    font-size:28px;
+    font-weight:700;
+}
+
+.logo span{
+    color:#00b4ff;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    transition:0.3s;
+    font-weight:500;
+}
+
+nav ul li a:hover{
+    color:#00b4ff;
+}
+
+/* HERO */
+
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
+    url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1600');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+.hero-content{
+    max-width:900px;
+    animation:fadeUp 1s ease;
+}
+
+.hero h1{
+    font-size:60px;
+    margin-bottom:20px;
+    line-height:1.1;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:35px;
+}
+
+.btn{
+    display:inline-block;
+    padding:16px 38px;
+    background:#00b4ff;
+    color:white;
+    border-radius:40px;
+    text-decoration:none;
+    transition:0.3s;
+    font-weight:600;
+    box-shadow:0 10px 20px rgba(0,180,255,0.3);
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    background:#0098d9;
+}
+
+/* SECCIONES */
+
+.tracking,
+.services,
+.contact{
+    padding:100px 8%;
+}
+
+.about{
+    padding:100px 8%;
+    background:#0b2545;
+    color:white;
+}
+
+.section-title{
+    font-size:42px;
+    margin-bottom:20px;
+    color:#0b2545;
+    text-align:center;
+    font-weight:700;
+}
+
+.about .section-title{
+    color:white;
+}
+
+/* TRACKING */
+
+.tracking{
+    background:white;
+    text-align:center;
+}
+
+.tracking-box{
+    max-width:760px;
+    margin:auto;
+    background:#f7fbff;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.tracking-box input{
+    width:100%;
+    padding:18px;
+    border:none;
+    border-radius:14px;
+    margin-bottom:20px;
+    font-size:16px;
+    background:#eef5ff;
+    outline:none;
+}
+
+.tracking-box button{
+    width:100%;
+    padding:18px;
+    border:none;
+    background:#00b4ff;
+    color:white;
+    border-radius:14px;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:600;
+}
+
+.tracking-box button:hover{
+    background:#0098d9;
+}
+
+.result{
+    margin-top:30px;
+}
+
+/* RESULTADO */
+
+.result-card{
+    background:white;
+    border-radius:25px;
+    overflow:hidden;
+    box-shadow:0 15px 35px rgba(0,0,0,0.10);
+    animation:fadeUp 0.5s ease;
+    text-align:left;
+}
+
+.result-header{
+    background:linear-gradient(135deg,#00b4ff,#0077ff);
+    color:white;
+    padding:25px;
+}
+
+.result-header h3{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.result-body{
+    padding:30px;
+}
+
+.result-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:20px;
+}
+
+.info-box{
+    background:#f5f9ff;
+    border-radius:18px;
+    padding:20px;
+    border:1px solid #e2edff;
+}
+
+.info-box span{
+    display:block;
+    font-size:14px;
+    color:#6b7280;
+    margin-bottom:8px;
+}
+
+.info-box strong{
+    color:#0b2545;
+    font-size:17px;
+    word-break:break-word;
+}
+
+.status{
+    margin-top:25px;
+    background:#ecfff3;
+    border:1px solid #9be7b7;
+    color:#0c7a3e;
+    padding:18px;
+    border-radius:16px;
+    font-weight:600;
+}
+
+.route-box{
+    margin-top:25px;
+    background:#eef6ff;
+    border:1px solid #cfe4ff;
+    border-radius:18px;
+    padding:22px;
+}
+
+.route-box h4{
+    color:#0b2545;
+    margin-bottom:10px;
+    font-size:20px;
+}
+
+.loading-box,
+.error-box,
+.warning-box{
+    padding:22px;
+    border-radius:18px;
+    margin-top:20px;
+    font-weight:600;
+}
+
+.loading-box{
+    background:#eef8ff;
+    color:#0077cc;
+}
+
+.error-box{
+    background:#fff1f1;
+    color:#d10000;
+}
+
+.warning-box{
+    background:#fff8e6;
+    color:#c27b00;
+}
+
+/* SERVICIOS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:50px;
+}
+
+.card{
+    background:white;
+    padding:35px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:#0b2545;
+}
+
+.card p{
+    color:#555;
+    line-height:1.7;
+}
+
+/* ABOUT */
+
+.about-content{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+}
+
+.about img{
+    width:100%;
+    border-radius:25px;
+}
+
+.about-text h2{
+    font-size:45px;
+    margin-bottom:20px;
+}
+
+.about-text p{
+    line-height:1.9;
+    font-size:17px;
+}
+
+/* CONTACTO */
+
+.contact{
+    text-align:center;
+}
+
+.contact-box{
+    margin-top:40px;
+    background:white;
+    padding:50px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    max-width:700px;
+    margin-inline:auto;
+}
+
+.contact-box p{
+    font-size:18px;
+    margin:15px 0;
+}
+
+/* FOOTER */
+
+footer{
+    background:#08192e;
+    color:white;
+    text-align:center;
+    padding:30px;
+    font-size:15px;
+}
+
+/* ANIMACIÓN */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    nav{
+        flex-direction:column;
+        gap:18px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:42px;
+    }
+
+    .hero p{
+        font-size:18px;
+    }
+
+    .about-content{
+        grid-template-columns:1fr;
+    }
+
+    .section-title{
+        font-size:34px;
+    }
+
+    .about-text h2{
+        font-size:35px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<nav>
+
+<div class="logo">
+Andes <span>Express</span>
+</div>
+
+<ul>
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#rastreo">Rastreo</a></li>
+<li><a href="#servicios">Servicios</a></li>
+<li><a href="#nosotros">Nosotros</a></li>
+<li><a href="#contacto">Contacto</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero" id="inicio">
+
+<div class="hero-content">
+
+<h1>
+Envíos de Colombia  a Estados Unidos 
+</h1>
+
+<p>
+Rápido • Seguro • Confiable • Seguimiento en tiempo real
+</p>
+
+<a href="#rastreo" class="btn">
+Rastrear paquete
+</a>
+
+</div>
+
+</section>
+
+<!-- TRACKING -->
+
+<section class="tracking" id="rastreo">
+
+<h2 class="section-title">
+Verifica tu número de guía
+</h2>
+
+<div class="tracking-box">
+
+<input
+type="text"
+id="trackingNumber"
+placeholder="Ingresa tu número de guía"
+/>
+
+<button onclick="trackPackage()">
+Consultar envío
+</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+</section>
+
+<!-- SERVICIOS -->
+
+<section class="services" id="servicios">
+
+<h2 class="section-title">
+Nuestros Servicios
+</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3> Envíos Express</h3>
+<p>
+Entregas rápidas y seguras entre Colombia y Estados Unidos.
+</p>
+</div>
+
+<div class="card">
+<h3> Carga Aérea</h3>
+<p>
+Transportamos paquetes y mercancía urgente con prioridad.
+</p>
+</div>
+
+<div class="card">
+<h3> Aduanas</h3>
+<p>
+Asesoría completa en procesos y trámites aduaneros.
+</p>
+</div>
+
+<div class="card">
+<h3> Rastreo Online</h3>
+<p>
+Consulta el estado de tu envío en tiempo real.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- NOSOTROS -->
+
+<section class="about" id="nosotros">
+
+<div class="about-content">
+
+<img
+src="https://i.ibb.co/Vpc2xtHg/envios-colombia.jpg"
+alt="Envios Andes Express"
+/>
+
+<div class="about-text">
+
+<h2>Nosotros</h2>
+
+<p>
+En Andes Express Cargo conectamos familias y negocios entre
+Colombia y Estados Unidos desde hace más de 10 años,
+ofreciendo un servicio confiable, rápido y seguro para cada envío.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACTO -->
+
+<section class="contact" id="contacto">
+
+<h2 class="section-title">
+Contáctanos
+</h2>
+
+<div class="contact-box">
+
+<p> +1 914 444 68 01</p>
+
+<p> andesexpress@mbox.re</p>
+
+<p> Bogotá, Colombia</p>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+© 2026 Andes Express Cargo - Todos los derechos reservados
+</footer>
+
+<!-- SCRIPT -->
+
+<script>
+
+async function trackPackage(){
+
+    const tracking =
+    document.getElementById("trackingNumber").value.trim();
+
+    const result =
+    document.getElementById("result");
+
+    if(tracking === ""){
+
+        result.innerHTML = `
+        <div class="warning-box">
+             Ingresa un número de guía
+        </div>
+        `;
+
+        return;
+    }
+
+    result.innerHTML = `
+    <div class="loading-box">
+         Consultando información del envío...
+    </div>
+    `;
+
+    const url =
+    "https://script.google.com/macros/s/AKfycbw6cXWGL6dgedDnB234Qlg5Y2NoMb_OAhoMAhwGdTGCv1iTavOBjzMWq3kPxqOnvwE9/exec?guia="
+    + tracking;
+
+    try{
+
+        const response = await fetch(url);
+
+        const data = await response.json();
+
+        if(data.encontrado){
+
+            result.innerHTML = `
+
+            <div class="result-card">
+
+                <div class="result-header">
+
+                    <h3> Envío encontrado</h3>
+
+                    <p>
+                        Información actualizada de tu paquete
+                    </p>
+
+                </div>
+
+                <div class="result-body">
+
+                    <div class="result-grid">
+
+                        <div class="info-box">
+                            <span> Número de guía</span>
+                            <strong>${data.guia}</strong>
+                        </div>
+
+                        <div class="info-box">
+                            <span> Remitente</span>
+                            <strong>${data.remitente}</strong>
+                        </div>
+
+                        <div class="info-box">
+                            <span> Destinatario</span>
+                            <strong>${data.destinatario}</strong>
+                        </div>
+
+                        <div class="info-box">
+                            <span> Documento receptor</span>
+                            <strong>${data.documento}</strong>
+                        </div>
+
+                        <div class="info-box">
+                            <span> Dirección entrega</span>
+                            <strong>${data.direccion}</strong>
+                        </div>
+
+                        <div class="info-box">
+                            <span> Destino</span>
+                            <strong>${data.destino}</strong>
+                        </div>
+
+                        <div class="info-box">
+                            <span> Fecha</span>
+                            <strong>${data.fecha}</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="route-box">
+
+                        <h4> Ruta del envío</h4>
+
+                        <p>
+                             ${data.origen}   ${data.destinoRuta}
+                        </p>
+
+                    </div>
+
+                    <div class="status">
+                         Estado actual:
+                        <strong>${data.estado}</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+            `;
+
+        }else{
+
+            result.innerHTML = `
+            <div class="error-box">
+                 Número de guía no encontrado
+            </div>
+            `;
+        }
+
+    }catch(error){
+
+        result.innerHTML = `
+        <div class="warning-box">
+             Error al conectar con el servidor
+        </div>
+        `;
+
+        console.error(error);
+    }
+}
+
+</script>
+
+</body>
+</html>
